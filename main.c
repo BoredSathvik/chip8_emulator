@@ -67,7 +67,7 @@ int main()
 
     init_chip8(&_chip8);
     // load_rom(&_chip8, test3, sizeof(test3));
-    load_rom_file(&_chip8, "chip8_roms/space_invaders.ch8");
+    load_rom_file(&_chip8, "chip8_roms/2-ibm-logo.ch8");
 
     InitAudioDevice();
     Sound beep = LoadSound("beep.mp3");
