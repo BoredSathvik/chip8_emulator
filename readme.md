@@ -1,6 +1,5 @@
-<h1 align="center">CHIP8 Emulator</h1>
-<p align="center">This is a chip_8 emulator made in C and Raylib</p>
-
+# CHIP8 Emulator
+This is a CHIP8 emulator made in C and Raylib
 
 ## Demo
 ![IBM Logo](resources/ibm.png "IBM Logo") 
@@ -17,7 +16,7 @@ gcc *.c -o main.exe -lraylib -lopengl32 -lgdi32 -lwinmm
 - raylib
 
 ## Credits
-- Used Timendus's [test suite]((https://github.com/Timendus/chip8-test-suite)) for testing all the opcode
+- Used Timendus's [test suite](https://github.com/Timendus/chip8-test-suite) for testing all the opcode
 - Used [david winter](https://github.com/kripod/chip8-roms)'s space_invaders and breakout for testing as well
 - Used [universfield](https://pixabay.com/users/universfield-28281460/)'s sound beep sound effect
 
