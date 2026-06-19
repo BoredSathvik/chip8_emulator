@@ -5,47 +5,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-uint8_t test[] = {
-    0x6E, 0x00, // LD Ve 0x00  # sprite number
-    0x60, 0x00, // LD V0 0x00  # x coord
-    0x61, 0x00, // LD V1 0x00  # y coord
-    0xFE, 0x29, // LD F Ve     # load sprite
-    0xD0, 0x15, // DRW V0 V1 5 # draw sprite
-
-    0x70, 0x05, // ADD V0 0x05 # mov x by one
-    0x71, 0x00, // ADD V1 0x00 # mov y by one
-    0x7E, 0x01, // ADD Ve 0x01 # get next number
-    // 0x12, 0x06, // JP 0x206
-    0x00, 0xE0, // CLS
-
-    0x00, 0x00, 0x00};
-
-// MAZE GENARATOR
-uint8_t test2[] = {
-    0xa2, 0x1e, // LD I 0x21E # load sprite 2
-    0xc2, 0x01, // RND V2 0x01 # rand no btw 0 & 2
-    0x32, 0x01, // SE V2 0x01 # skip if rand no == 2
-    0xa2, 0x1a, // LD I 0x21A # load sprite 1
-    0xd0, 0x14, // DRW V0 V1 4 # draw sprite at V0 V1 and size 4 bytes
-    0x70, 0x04, // ADD V0 0x04 # add 0x04 to V0
-    0x30, 0x40, // SE V0 0x40 # skip if V0 == 0x40
-    0x12, 0x00, // JP 200 # jump to 200
-    0x60, 0x00, // LD V0 0x00
-    0x71, 0x04, // ADD V1 0x04 # add 0x04 to V1
-    0x31, 0x20, // SE V1 0x20 # skip if V1 == 0x20
-    0x12, 0x00, // JP 200 # jump to 200
-    0x12, 0x18, // JP 218 # jump to same instruction
-    // Sprite 1
-    0x80, // 10000000
-    0x40, // 01000000
-    0x20, // 00100000
-    0x10, // 00010000
-    // Sprite 2
-    0x20,  // 00100000
-    0x40,  // 01000000
-    0x80,  // 10000000
-    0x10}; // 00010000
-
 int width = 64;
 int height = 32;
 int scaling = 10;
@@ -63,14 +22,13 @@ int main()
 {
     _chip8.width = width;
     _chip8.height = height;
-    _chip8.quirk = false; // if we should increment index counter in 0xFs55 and 0xFx65, MODERN ONES PUT THIS TO FALSE
+    _chip8.quirk = false; // if we should increment index counter in 0xFs55 and 0xFx65 and other quirks ask ai or something, MODERN ONES PUT THIS TO FALSE
 
     init_chip8(&_chip8);
-    // load_rom(&_chip8, test3, sizeof(test3));
-    load_rom_file(&_chip8, "chip8_roms/2-ibm-logo.ch8");
+    load_rom_file(&_chip8, "chip8_roms/1-chip8-logo.ch8");
 
     InitAudioDevice();
-    Sound beep = LoadSound("beep.mp3");
+    Sound beep = LoadSound("resources/beep.mp3");
 
     InitWindow(width * scaling, height * scaling, "chip8_emulator");
     SetTargetFPS(60);
